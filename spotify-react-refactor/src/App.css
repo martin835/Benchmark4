@@ -326,6 +326,7 @@ a:hover{
 
 .sidebar-bg >div > div > span:hover {
     color: var(--white-1);
+    cursor: pointer;
 }
 .sidebar-bg >div > div > div:hover {
     color: var(--white-1);
@@ -420,8 +421,8 @@ a:hover{
 
 /* Martin's classes for the artist page */
 
-/* .artist-main-container {
-    background-image: url("../../public/Assests/foo-fighters-1.jpg") ;
+.artist-main-container {
+    /* background-image: url( "../Assests/foo-fighters-1.jpg") ; */
     background-position: center 45%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -433,9 +434,9 @@ a:hover{
     padding-right: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: end;
     position: relative;
-} */
+}
 
 .artist-main-container::before {
     content: "";

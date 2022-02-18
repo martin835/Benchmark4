@@ -24,7 +24,7 @@ const MainBody = () => {
      
           } else {
  
-            alert("Somenthinf wrong")
+            alert("Something wrong")
           }
         } catch (error) {
           console.log(error);
