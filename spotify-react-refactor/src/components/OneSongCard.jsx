@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import Comments from "./Comments";
 
 
 
@@ -10,7 +11,7 @@ const OneSongCard = (props) => (
       lg={4}
       xl={3}
       className="mt-3"
-      onClick={()=>{
+      onClick={() => {
         props.setCurrentSong({
           songTitle: props.title,
           artist: props.artist,
@@ -26,7 +27,7 @@ const OneSongCard = (props) => (
                 <img
                   className="px-3 py-3 card-image-main"
                   src={props.image}
-                  alt=""
+                  alt="album-img"
                 />
               </div>
               <div className="son2 d-flex justify-content-end align-items-end">
@@ -39,6 +40,9 @@ const OneSongCard = (props) => (
         </div>
         <h6 className="px-2 my-1 card-title">{props.title}</h6>
         <p className="card-description-main my-2 px-2 ">{props.artist}</p>
+        <p className="card-description-main my-2 px-2 ">
+          <Comments albumId={props.albumId} songId={props.songId} />
+        </p>
       </div>
     </Col>
   </>

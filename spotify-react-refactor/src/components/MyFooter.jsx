@@ -35,7 +35,7 @@ const MyFooter = (props) => (
               <i className="bi bi-arrow-repeat d-inline-block mx-2 "></i>
             </div>
             <div className="d-flex align-items-center justify-content-center mb-3 mt-n1">
-              <span className="mr-n4">3.34</span>
+              <span className="mr-n4">0:00</span>
               <div className="bar-wrapper">
                 <hr className="bar-inner align-self-start mb-auto mt-auto" />
               </div>

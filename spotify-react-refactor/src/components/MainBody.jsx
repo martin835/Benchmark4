@@ -48,6 +48,8 @@ const MainBody = (props) => {
             songs.map((song) => (
               <OneSongCard
                 key={song.id}
+                albumId={song.album.id}
+                songId = {song.id}
                 image={song.album.cover_medium}
                 title={song.title}
                 artist={song.artist.name}
