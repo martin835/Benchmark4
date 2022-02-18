@@ -51,6 +51,7 @@ const MainBody = (props) => {
                 image={song.album.cover_medium}
                 title={song.title}
                 artist={song.artist.name}
+                setCurrentSong={props.setCurrentSong}
               />
             ))}
         </Row>

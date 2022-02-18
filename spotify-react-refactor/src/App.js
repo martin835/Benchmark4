@@ -13,8 +13,16 @@ import { useState, useEffect } from "react";
 function App() {
 
   const [searchQuery, setSearchQuery] = useState("queen")
+  const [currentSong, setCurrentSong] = useState({
+    songTitle: "",
+    artist: "",
+    image: ""
+  })
   
   useEffect(()=>{console.log(searchQuery);},[])
+  useEffect(() => {
+    console.log(currentSong);
+  }, [currentSong]);
 
 
   return (
@@ -36,6 +44,7 @@ function App() {
                   <MainBody
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
+                    setCurrentSong={setCurrentSong}
                   />
                 }
               />
@@ -45,7 +54,7 @@ function App() {
           </Col>
         </Row>
       </Container>
-      <MyFooter />
+      <MyFooter currentSong={currentSong} />
     </BrowserRouter>
   );
 }

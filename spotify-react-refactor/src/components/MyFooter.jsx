@@ -1,22 +1,23 @@
  import { Nav, Navbar, NavDropdown } from "react-bootstrap";
  import Container from "react-bootstrap/Container";
 
-const MyFooter = () => (
+const MyFooter = (props) => (
   <>
-    
     <footer className="fixed-bottom footer-class">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3 d-flex flex-nowrap justify-content-center justify-content-md-between">
             <img
-              src={require("../Assests/tile1.jpg")}
+              src={props.currentSong.image}
               alt="footer-tile"
               className="align-self-center footer-tile mr-2"
             />
 
             <div className="align-self-center mr-md-auto">
-              <p className="mb-0 footer-song-text">Everlong</p>
-              <span className="band-text">Foo Fighters</span>
+              <p className="mb-0 footer-song-text">
+                {props.currentSong.songTitle}
+              </p>
+              <span className="band-text">{props.currentSong.artist}</span>
             </div>
             <div className="d-flex align-items-center justify-content-center">
               <i className="bi bi-heart ml-3"></i>

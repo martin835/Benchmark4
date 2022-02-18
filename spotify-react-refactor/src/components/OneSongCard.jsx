@@ -4,7 +4,20 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const OneSongCard = (props) => (
   <>
-    <Col xs={12} md={6} lg={4} xl={3} className="mt-3">
+    <Col
+      xs={12}
+      md={6}
+      lg={4}
+      xl={3}
+      className="mt-3"
+      onClick={()=>{
+        props.setCurrentSong({
+          songTitle: props.title,
+          artist: props.artist,
+          image: props.image,
+        });
+      }}
+    >
       <div className="card-main pb-1">
         <div className="d-flex justify-content-center">
           <div className="d-flex justify-content-center">
@@ -25,9 +38,7 @@ const OneSongCard = (props) => (
           </div>
         </div>
         <h6 className="px-2 my-1 card-title">{props.title}</h6>
-        <p className="card-description-main my-2 px-2 ">
-        {props.artist}
-        </p>
+        <p className="card-description-main my-2 px-2 ">{props.artist}</p>
       </div>
     </Col>
   </>
