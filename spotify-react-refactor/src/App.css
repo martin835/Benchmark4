@@ -19,7 +19,9 @@ body {
 }
 /*Ali's classes for main section*/
 
-
+.top-bumper {
+    height: 72px;
+}
 
 .h1-main{
     color: var(--white-1);
