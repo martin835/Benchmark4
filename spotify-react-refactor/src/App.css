@@ -133,6 +133,7 @@ div.card-main:hover .son2{
 div.small-card-main:hover {
     background-color: #8d8a8a63;
     box-shadow: 10px 5px 5px black;
+    cursor: pointer;
 }
 
 
@@ -140,6 +141,7 @@ div.card-main:hover{
     opacity: 0.8;
     background-color: #8d8a8a63 ; 
     box-shadow: 10px 5px 15px black; 
+    cursor: pointer;
 }
 .imagewrapper{
     position: relative;
