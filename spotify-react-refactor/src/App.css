@@ -182,6 +182,7 @@ a:hover{
 }
 
 
+
 @media (max-width: 767px) {
     .hidden-sm{
         display: none;
@@ -265,7 +266,19 @@ a:hover{
     letter-spacing: -1px;
 }
 
+.search-input-adhoc {    
+       background-color:rgba(0,0,0,0) !important;
+       border:1px solid white !important;
+       color: white !important;    
+}
 
+.search-input-adhoc::placeholder {
+    color: white !important;
+
+}
+.search-input-adhoc:focus {
+    border: 3px solid white !important;
+}
 
 .footer-class{
     color: var(--white-1);

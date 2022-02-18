@@ -8,8 +8,15 @@ import MainBody from './components/MainBody';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import BodyArtist from "./components/BodyArtist"
 import BodyAlbum from "./components/BodyAlbum"
+import { useState, useEffect } from "react";
 
 function App() {
+
+  const [searchQuery, setSearchQuery] = useState("queen")
+  
+  useEffect(()=>{console.log(searchQuery);},[])
+
+
   return (
     <BrowserRouter>
       <Container fluid>
@@ -18,9 +25,20 @@ function App() {
             <MySideBar />
           </Col>
           <Col xs={10}>
-            <MyNavBar />
+            <MyNavBar
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
             <Routes>
-              <Route path="/" element={<MainBody />} />
+              <Route
+                path="/"
+                element={
+                  <MainBody
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                  />
+                }
+              />
               <Route path="/artist" element={<BodyArtist />} />
               <Route path="/album" element={<BodyAlbum />} />
             </Routes>

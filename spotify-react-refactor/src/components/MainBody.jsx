@@ -2,18 +2,23 @@ import {Container, Row, Col} from "react-bootstrap";
 import OneSongCard from "./OneSongCard";
 import { useState, useEffect } from "react";
 
-const MainBody = () => {
+const MainBody = (props) => {
 
     const [songs, setSongs] = useState([])
     
-    useEffect(()=> {
+    useEffect(() => {
+      if(props.searchQuery) {
         fetchSongs();
-    },[])
+    } else {
+      props.setSearchQuery("queen")
+    }
+  }, [props.searchQuery]);
 
     const fetchSongs = async () => {
         try {
           let response = await fetch(
-            "https://striveschool-api.herokuapp.com/api/deezer/search?q=queen"
+            "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
+              props.searchQuery
           );
           if (response.ok) {
             let data = await response.json();
@@ -39,14 +44,15 @@ const MainBody = () => {
         <h2 className="h2-main">Recently played</h2>
 
         <Row id="main-section-recent">
-          {songs.map((song) => (
-            <OneSongCard
-              key={song.id}
-              image={song.album.cover_medium}
-              title={song.title}
-              artist={song.artist.name}
-            />
-          ))}
+          {props.searchQuery.length &&
+            songs.map((song) => (
+              <OneSongCard
+                key={song.id}
+                image={song.album.cover_medium}
+                title={song.title}
+                artist={song.artist.name}
+              />
+            ))}
         </Row>
         <div className="bottom-bumper"></div>
       </Container>
