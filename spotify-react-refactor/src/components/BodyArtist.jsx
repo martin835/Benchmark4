@@ -153,6 +153,7 @@ const BodyArtist = () => {
           <span className="ml-4 artist-text-secundary">MORE...</span>
         </div>
       </div>
+      <div className="bottom-bumper"></div>
     </>
   );
 };

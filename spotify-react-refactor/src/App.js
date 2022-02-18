@@ -7,20 +7,22 @@ import MyNavBar from "./components/MyNavBar"
 import MainBody from './components/MainBody';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import BodyArtist from "./components/BodyArtist"
+import BodyAlbum from "./components/BodyAlbum"
 
 function App() {
   return (
     <BrowserRouter>
       <Container fluid>
-        <Row>
+        <Row className="flex-nowrap">
           <Col xs={2} className="sidebar-bg">
             <MySideBar />
           </Col>
           <Col xs={10}>
             <MyNavBar />
             <Routes>
-              <Route path="/" element={<MainBody />}/>
-              <Route path="/artist" element={<BodyArtist />}/>
+              <Route path="/" element={<MainBody />} />
+              <Route path="/artist" element={<BodyArtist />} />
+              <Route path="/album" element={<BodyAlbum />} />
             </Routes>
           </Col>
         </Row>

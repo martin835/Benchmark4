@@ -23,6 +23,12 @@ body {
     height: 72px;
 }
 
+.bottom-bumper{
+    height: 140px;
+    width: 100%;
+}
+
+
 .h1-main{
     color: var(--white-1);
     font-size: 2rem;
@@ -566,6 +572,11 @@ a:hover{
     font-size: 12px;
     padding-top: 0px;
 
+}
+
+.hr-album {
+    background-color: rgb(204, 186, 186);
+    margin-top: 25px;
 }
 
 .ash_tag{

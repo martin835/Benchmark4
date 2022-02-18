@@ -40,10 +40,15 @@ const MainBody = () => {
 
         <Row id="main-section-recent">
           {songs.map((song) => (
-            <OneSongCard key={song.id} image={song.album.cover_medium} title={song.title} artist={song.artist.name} />
+            <OneSongCard
+              key={song.id}
+              image={song.album.cover_medium}
+              title={song.title}
+              artist={song.artist.name}
+            />
           ))}
-       
         </Row>
+        <div className="bottom-bumper"></div>
       </Container>
     );
 }
