@@ -7,13 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container, Row, Col} from "react-bootstrap"
 
 ReactDOM.render(
-  <Container fluid>
-    <Row>
-    <Col>
+  <>
       <App />
-    </Col>
-    </Row>
-  </Container>,
+  </>,
   document.getElementById('root')
 );
 
