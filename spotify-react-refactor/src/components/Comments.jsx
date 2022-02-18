@@ -113,7 +113,7 @@ const Comments = (props) => {
 
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" + props.songId,
+        "https://striveschool-api.herokuapp.com/api/comments/" + e.target.id,
         {
           method: "DELETE",
           headers: {
