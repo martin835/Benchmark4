@@ -37,6 +37,7 @@ const OneSongCard = (props) => {
 
   const [playlist, setPlaylist] = useState(undefined)
 
+  return (
   <>
     <Col
       xs={12}
