@@ -659,7 +659,13 @@ a:hover{
     color:white
 }
 
+.bg-gray{
+    color: #207e5d;
+}
 
+.pointer{
+    cursor: pointer;
+}
 /* .artist-songs-table-wrapper > .row button {
     background: transparent;
     border: none;

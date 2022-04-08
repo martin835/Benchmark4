@@ -74,7 +74,7 @@ const MySideBar = (props) => {
         </div>
         <Modal show={show} onHide={()=> setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Create Playlist</Modal.Title>
         </Modal.Header>
         <input className="m-2" placeholder="insert new playlist name..." type="text" onChange={(e) => {setPlaylist({name: e.target.value, songs: []})}}/>
         <Modal.Footer>
