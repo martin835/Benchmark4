@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BodyArtist from "./components/BodyArtist";
 import BodyAlbum from "./components/BodyAlbum";
 import { useState, useEffect } from "react";
+import LikedSongs from "./components/LikedSongs";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("queen");
@@ -50,6 +51,7 @@ function App() {
               />
               <Route path="/artist" element={<BodyArtist />} />
               <Route path="/album" element={<BodyAlbum />} />
+              <Route path="/liked" element={<LikedSongs />} />
             </Routes>
           </Col>
         </Row>

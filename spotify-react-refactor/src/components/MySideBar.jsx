@@ -54,7 +54,9 @@ const MySideBar = () => {
           </span>
           <span>Create Playlist</span>
         </div>
-        <div>
+        <div  onClick={() => {
+            navigate("/liked");
+          }}>
           <span>
             <img src={require("../Assests/liked-icon.png")} alt="" />
           </span>
