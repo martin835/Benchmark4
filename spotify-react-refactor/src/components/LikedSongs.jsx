@@ -2,11 +2,11 @@ import {Container, Row, Col} from "react-bootstrap";
 import OneSongCard from "./OneSongCard";
 import { useState, useEffect } from "react";
 import { connect } from 'react-redux'
-import { getResultAction } from '../redux/actions'
+
 
 
 const mapStateToProps = (state) => ({
-  result: state.search.result,
+  liked: state.favourites.liked,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,9 +27,8 @@ const LikedSongs = (props) => {
         <h2 className="h2-main">Liked Songs</h2>
 
         <Row id="main-section-recent">
-          <h1>PLACEHOLDER</h1>
-          {/* {props.searchQuery.length &&
-            props.result.map((song) => (
+          {props.liked &&
+            props.liked.map((song) => (
               <OneSongCard
                 key={song.id}
                 albumId={song.album.id}
@@ -38,8 +37,9 @@ const LikedSongs = (props) => {
                 title={song.title}
                 artist={song.artist.name}
                 setCurrentSong={props.setCurrentSong}
+                song={song}
               />
-            ))} */}
+            ))}
         </Row>
         <div className="bottom-bumper"></div>
       </Container>

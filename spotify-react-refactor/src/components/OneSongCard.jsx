@@ -1,5 +1,21 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Comments from "./Comments";
+import { connect } from 'react-redux'
+import { addToLikedAction, removeFromLikedAction } from '../redux/actions'
+
+const mapStateToProps = (state) => ({
+    liked: state.favourites.liked,
+  })
+
+const mapDispatchToProps = (dispatch) => ({
+   
+    addToLiked: (songL) => {
+      dispatch(addToLikedAction(songL))
+    },
+    removeFromLiked: (songL) => {
+      dispatch(removeFromLikedAction(songL))
+    }
+  })
 
 
 
@@ -12,11 +28,7 @@ const OneSongCard = (props) => (
       xl={3}
       className="mt-3"
       onClick={() => {
-        props.setCurrentSong({
-          songTitle: props.title,
-          artist: props.artist,
-          image: props.image,
-        });
+        props.setCurrentSong(props.song);
       }}
     >
       <div className="card-main pb-1">
@@ -41,14 +53,17 @@ const OneSongCard = (props) => (
         <h6 className="px-2 my-1 card-title">{props.title}</h6>
         <div className="d-flex justify-content-between" >
         <p className="card-description-main my-2 px-2 ">{props.artist}</p>
-        <i className="bi bi-heart mr-2 liked-heart"></i>
+        {props.liked.indexOf(props.song) === -1 ?
+        <i className="bi bi-heart mr-2 like-heart-button" onClick={()=> {props.addToLiked(props.song)}}></i>:
+        <i className="bi bi-heart-fill mr-2 like-heart-button" onClick={()=>{props.removeFromLiked(props.liked.indexOf(props.song))}}></i>
+        }
         </div>
-        <p className="card-description-main my-2 px-2 ">
+        {/* <p className="card-description-main my-2 px-2 "> */}
           <Comments albumId={props.albumId} songId={props.songId} />
-        </p>
+        {/* </p> */}
       </div>
     </Col>
   </>
 );
 
-export default OneSongCard;
+export default connect(mapStateToProps, mapDispatchToProps)(OneSongCard)

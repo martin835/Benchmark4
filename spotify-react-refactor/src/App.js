@@ -14,9 +14,9 @@ import LikedSongs from "./components/LikedSongs";
 function App() {
   const [searchQuery, setSearchQuery] = useState("queen");
   const [currentSong, setCurrentSong] = useState({
-    songTitle: "",
-    artist: "",
-    image: "",
+    album:{cover_small: "https://e-cdns-images.dzcdn.net/images/cover/6706f1154083f461a348508c28030a30/56x56-000000-80-0-0.jpg"},
+    artist:{name: "Queen"},
+    title: "Bohemian Rhapsody (Remastered 2011)",
   });
 
   useEffect(() => {
