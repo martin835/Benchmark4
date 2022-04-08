@@ -10,6 +10,7 @@ import BodyArtist from "./components/BodyArtist";
 import BodyAlbum from "./components/BodyAlbum";
 import { useState, useEffect } from "react";
 import LikedSongs from "./components/LikedSongs";
+import Playlist from "./components/Playlist";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("queen");
@@ -53,6 +54,7 @@ function App() {
               <Route path="/artist/:artistId" element={<BodyArtist />} />
               <Route path="/album/:albumId" element={<BodyAlbum />} />
               <Route path="/liked" element={<LikedSongs />} />
+              <Route path="/playlist/:playlistName" element={<Playlist />} />
 
             </Routes>
           </Col>

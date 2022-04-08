@@ -2,6 +2,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import searchReducer from '../reducers/search'
 import likedReducer from '../reducers/liked'
+import playlistsReducer from '../reducers/playlists'
 import thunk from 'redux-thunk'
 
 
@@ -23,10 +24,19 @@ export const initialState = {
     artistSongs: [],
     artistInfo: {},
   },
-};
+
+  
+  playlists:{
+    all:[
+
+    ]
+  }
+}
+
 
 const bigReducer = combineReducers({
   favourites: likedReducer,
+  playlists: playlistsReducer,
   search: searchReducer,
 });
 
