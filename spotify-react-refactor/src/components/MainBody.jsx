@@ -71,6 +71,7 @@ const MainBody = (props) => {
                 title={song.title}
                 artist={song.artist.name}
                 setCurrentSong={props.setCurrentSong}
+                song={song}
               />
             ))}
         </Row>
