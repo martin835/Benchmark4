@@ -655,6 +655,10 @@ a:hover{
   cursor: pointer;
 }
 
+.like-heart-button{
+    color:white
+}
+
 
 /* .artist-songs-table-wrapper > .row button {
     background: transparent;

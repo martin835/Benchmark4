@@ -1,26 +1,46 @@
  import { Nav, Navbar, NavDropdown } from "react-bootstrap";
  import Container from "react-bootstrap/Container";
+ import { connect } from 'react-redux'
+import { addToLikedAction, removeFromLikedAction } from '../redux/actions'
+
+const mapStateToProps = (state) => ({
+    liked: state.favourites.liked,
+    result: state.search.result
+  })
+
+const mapDispatchToProps = (dispatch) => ({
+   
+    addToLiked: (songL) => {
+      dispatch(addToLikedAction(songL))
+    },
+    removeFromLiked: (songL) => {
+      dispatch(removeFromLikedAction(songL))
+    }
+  })
 
 const MyFooter = (props) => (
-  <>
+  <> 
     <footer className="fixed-bottom footer-class">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3 d-flex flex-nowrap justify-content-center justify-content-md-between">
             <img
-              src={props.currentSong.image}
+              src={props.currentSong.album.cover_small}
               alt="footer-tile"
               className="align-self-center footer-tile mr-2"
             />
 
             <div className="align-self-center mr-md-auto">
               <p className="mb-0 footer-song-text">
-                {props.currentSong.songTitle}
+                {props.currentSong.title}
               </p>
-              <span className="band-text">{props.currentSong.artist}</span>
+              <span className="band-text">{props.currentSong.artist.name}</span>
             </div>
             <div className="d-flex align-items-center justify-content-center">
-              <i className="bi bi-heart ml-3"></i>
+            {props.liked.indexOf(props.currentSong) === -1 ?
+        <i className="bi bi-heart mr-2 like-heart-button" onClick={()=> {props.addToLiked(props.currentSong)}}></i>:
+        <i className="bi bi-heart-fill mr-2 like-heart-button" onClick={()=>{props.removeFromLiked(props.liked.indexOf(props.currentSong))}}></i>
+        }
               <i className="bi bi-pip ml-3"></i>
             </div>
           </div>
@@ -56,5 +76,5 @@ const MyFooter = (props) => (
   </>
 );
 
-export default MyFooter
+export default connect(mapStateToProps, mapDispatchToProps)(MyFooter)
 
