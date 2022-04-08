@@ -30,7 +30,7 @@ const BodyAlbum = (props) => {
 
   return (
     <div>
-      {props.artistAlbum.artist.name && (
+      {props.artistAlbum.artist?.name && (
         <>
           {" "}
           <div className="top-bumper"></div>
