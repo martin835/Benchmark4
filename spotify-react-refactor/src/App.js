@@ -1,29 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-import MyFooter from './components/MyFooter';
-import {Container, Row, Col} from "react-bootstrap"
-import MySideBar from './components/MySideBar';
-import MyNavBar from "./components/MyNavBar"
-import MainBody from './components/MainBody';
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-import BodyArtist from "./components/BodyArtist"
-import BodyAlbum from "./components/BodyAlbum"
+import logo from "./logo.svg";
+import "./App.css";
+import MyFooter from "./components/MyFooter";
+import { Container, Row, Col } from "react-bootstrap";
+import MySideBar from "./components/MySideBar";
+import MyNavBar from "./components/MyNavBar";
+import MainBody from "./components/MainBody";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BodyArtist from "./components/BodyArtist";
+import BodyAlbum from "./components/BodyAlbum";
 import { useState, useEffect } from "react";
 
 function App() {
-
-  const [searchQuery, setSearchQuery] = useState("queen")
+  const [searchQuery, setSearchQuery] = useState("queen");
   const [currentSong, setCurrentSong] = useState({
     songTitle: "",
     artist: "",
-    image: ""
-  })
-  
-  useEffect(()=>{console.log(searchQuery);},[])
+    image: "",
+  });
+
+  useEffect(() => {
+    console.log(searchQuery);
+  }, []);
   useEffect(() => {
     console.log(currentSong);
   }, [currentSong]);
-
 
   return (
     <BrowserRouter>
