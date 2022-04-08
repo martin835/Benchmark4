@@ -1,41 +1,58 @@
 import {Container, Row, Col} from "react-bootstrap";
 import OneSongCard from "./OneSongCard";
 import { useState, useEffect } from "react";
+import { connect } from 'react-redux'
+import { getResultAction } from '../redux/actions'
+
+
+const mapStateToProps = (state) => ({
+  result: state.search.result,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getResult: (search) => {
+    dispatch(getResultAction(search))
+  },
+})
+
+
+
+
 
 const MainBody = (props) => {
 
-    const [songs, setSongs] = useState([])
+  //   const [songs, setSongs] = useState([])
     
     useEffect(() => {
       if(props.searchQuery) {
-        fetchSongs();
+        props.getResult(props.searchQuery)
     } else {
       props.setSearchQuery("queen")
     }
   }, [props.searchQuery]);
 
-    const fetchSongs = async () => {
-        try {
-          let response = await fetch(
-            "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-              props.searchQuery
-          );
-          if (response.ok) {
-            let data = await response.json();
-            console.log( data.data);
+  //   const fetchSongs = async () => {
+  //       try {
+  //         let response = await fetch(
+  //           "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
+  //             props.searchQuery
+  //         );
+  //         if (response.ok) {
+  //           let data = await response.json();
+  //           console.log( data.data);
        
     
-              setSongs(data.data);
+  //             setSongs(data.data);
      
-          } else {
+  //         } else {
  
-            alert("Something wrong")
-          }
-        } catch (error) {
-          console.log(error);
+  //           alert("Something wrong")
+  //         }
+  //       } catch (error) {
+  //         console.log(error);
        
-        }
-    } 
+  //       }
+  //   } 
 
 
     return (
@@ -45,7 +62,7 @@ const MainBody = (props) => {
 
         <Row id="main-section-recent">
           {props.searchQuery.length &&
-            songs.map((song) => (
+            props.result.map((song) => (
               <OneSongCard
                 key={song.id}
                 albumId={song.album.id}
@@ -62,4 +79,4 @@ const MainBody = (props) => {
     );
 }
 
-export default MainBody;
+export default connect(mapStateToProps, mapDispatchToProps)(MainBody)
