@@ -39,7 +39,10 @@ const OneSongCard = (props) => (
           </div>
         </div>
         <h6 className="px-2 my-1 card-title">{props.title}</h6>
+        <div className="d-flex justify-content-between" >
         <p className="card-description-main my-2 px-2 ">{props.artist}</p>
+        <i className="bi bi-heart mr-2 liked-heart"></i>
+        </div>
         <p className="card-description-main my-2 px-2 ">
           <Comments albumId={props.albumId} songId={props.songId} />
         </p>
