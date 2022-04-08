@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function PlaylistItem({ song, i }) {
+function PlaylistItem({ song, i, smallImg }) {
   return (
     <>
       <div class="row align-items-center py-3">
@@ -14,15 +14,15 @@ function PlaylistItem({ song, i }) {
           >
             <i class="bi bi-play-fill"></i>
           </span>
-          <img src={song.album.cover_small} alt></img>
-          <span>{song.title_short}</span>
+          <img src={song && smallImg} alt></img>
+          <span>{song && song.title_short}</span>
         </div>
         <div class="col-3 d-none d-md-block artist-main-songs-right">
-          <span>{song.rank}</span>
+          <span>{song && song.rank}</span>
         </div>
         <div class="col-6 col-md-3 d-none d-sm-block text-right  text-sm-center artist-main-songs-right">
           {/* <!-- <span><i class="bi bi-heart"></i></span> --> */}
-          <span class="ml-3">{song.duration}</span>
+          <span class="ml-3">{song && song.duration}</span>
         </div>
       </div>
     </>

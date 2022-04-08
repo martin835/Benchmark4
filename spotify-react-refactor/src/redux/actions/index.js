@@ -28,10 +28,10 @@ export const getArtistAlbumAction = (albumId) => {
       let resp = await fetch(`${process.env.REACT_APP_LOCAL}/album/${albumId}`);
       if (resp.ok) {
         let result = await resp.json();
-
+        console.log(result);
         dispatch({
           type: "GET_ARTIST_ALBUM",
-          payload: result.data,
+          payload: result,
         });
       } else {
         console.log("error");

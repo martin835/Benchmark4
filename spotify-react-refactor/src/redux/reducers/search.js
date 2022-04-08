@@ -11,7 +11,7 @@ const searchReducer = (state = initialState.search, action) => {
       };
 
     case "GET_ARTIST_ALBUM":
-      return { ...state, artistAlbums: action.payload };
+      return { ...state, artistAlbum: action.payload };
 
     case "GET_ARTIST_SONGS":
       return { ...state, artistSongs: action.payload };

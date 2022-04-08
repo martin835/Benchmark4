@@ -77,7 +77,7 @@ const BodyArtist = (props) => {
       </div>
       <div className="artist-songs-table-wrapper px-3" id="play-list-container">
         {props.artistSongs.map((song, i) => (
-          <PlaylistItem song={song} i={i} />
+          <PlaylistItem song={song} i={i} smallImg={song.album.cover_small} />
         ))}
       </div>
       <div className="row">
