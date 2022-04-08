@@ -1,8 +1,26 @@
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import {  Modal, Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { connect } from 'react-redux'
+import { addToPlaylistAction} from '../redux/actions'
+import { propTypes } from "react-bootstrap/esm/Image";
+import { useState } from "react";
 
-const MySideBar = () => {
+const mapStateToProps = (state) => ({
+    all: state.playlists.all,
+  })
+
+const mapDispatchToProps = (dispatch) => ({
+  addToPlaylist: (playlist) => {
+    dispatch(addToPlaylistAction(playlist))
+  },
+  })
+
+const MySideBar = (props) => {
+
+  const [show, setShow] = useState(false);
+
+  const [playlist, setPlaylist] = useState(undefined)
 
   const navigate = useNavigate();
 
@@ -48,12 +66,26 @@ const MySideBar = () => {
         </div>
 
         <div className="sidebar-divider"></div>
-        <div>
+        <div onClick={()=> setShow(true)}>
           <span>
             <i className="bi bi-plus-square-fill"></i>
           </span>
           <span>Create Playlist</span>
         </div>
+        <Modal show={show} onHide={()=> setShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <input className="m-2" placeholder="insert new playlist name..." type="text" onChange={(e) => {setPlaylist({name: e.target.value, songs: []})}}/>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={()=> setShow(false)}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={()=>{ setShow(false); props.addToPlaylist(playlist)}}>
+            create playlist
+          </Button>
+        </Modal.Footer>
+      </Modal>
         <div  onClick={() => {
             navigate("/liked");
           }}>
@@ -68,28 +100,8 @@ const MySideBar = () => {
       </div>
       <div className="sidebar-bottom mt-2">
         <div className="sidebar-bottom-content">
-          <div>FRANCHISE ft. Young Thug something</div>
-          <div>FRANCHISE ft. Young Thug something</div>
-          <div>
-            June19{" "}
-            <span className="float-right">
-              <i className="bi bi-people"></i>
-            </span>{" "}
-          </div>
-          <div>
-            Party{" "}
-            <span className="float-right">
-              <i className="bi bi-people"></i>
-            </span>{" "}
-          </div>
-          <div>FRANCHISE ft. Young Thug something</div>
-          <div>FRANCHISE ft. Young Thug something</div>
-          <div>FRANCHISE ft. Young Thug something</div>
-          <div>FRANCHISE ft. Young Thug something</div>
-          <div>FRANCHISE ft. Young Thug something</div>
-          <div>FRANCHISE ft. Young Thug something</div>
-          <div>FRANCHISE ft. Young Thug something</div>
-          <div>FRANCHISE ft. Young Thug something</div>
+          {props.all.map((playlist) => {return <div>{playlist.name}</div>})
+}
         </div>
 
         <div className="sidebar-instal my-3">
@@ -103,4 +115,4 @@ const MySideBar = () => {
   );
 }
 
-export default MySideBar;
+export default connect(mapStateToProps, mapDispatchToProps)(MySideBar)
