@@ -3,6 +3,7 @@ import Comments from "./Comments";
 import { connect } from 'react-redux'
 import { addToLikedAction, removeFromLikedAction, addSongToPlaylistAction } from '../redux/actions'
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const mapStateToProps = (state) => ({
     liked: state.favourites.liked,
@@ -25,6 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 const OneSongCard = (props) => {
+
+  const params = useParams()
 
   const [show, setShow] = useState(false);
 
@@ -64,7 +67,7 @@ return(
         <h6 className="px-2 my-1 card-title">{props.title}</h6>
         <div className="d-flex justify-content-between" >
         <p className="card-description-main my-2 px-2 ">{props.artist}</p>
-        <div>{
+        <div>{!params.playlistName &&
         <i className="bi bi-plus-square-fill mr-2 like-heart-button" onClick={()=> setShow(true)}></i>}
         {props.liked.indexOf(props.song) === -1 ?
         <i className="bi bi-heart mr-2 like-heart-button" onClick={()=> {props.addToLiked(props.song)}}></i>:
