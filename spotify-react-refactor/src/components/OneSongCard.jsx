@@ -1,7 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Comments from "./Comments";
-
-
+import { Link } from "react-router-dom";
 
 const OneSongCard = (props) => (
   <>
@@ -38,8 +37,12 @@ const OneSongCard = (props) => (
             </div>
           </div>
         </div>
-        <h6 className="px-2 my-1 card-title">{props.title}</h6>
-        <p className="card-description-main my-2 px-2 ">{props.artist}</p>
+        <Link to={`/album/${props.albumId}`}>
+          <h6 className="px-2 my-1 card-title">{props.title}</h6>
+        </Link>
+        <Link to={`/artist/${props.artistId}`}>
+          <p className="card-description-main my-2 px-2 ">{props.artist}</p>
+        </Link>
         <p className="card-description-main my-2 px-2 ">
           <Comments albumId={props.albumId} songId={props.songId} />
         </p>
