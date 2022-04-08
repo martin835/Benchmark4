@@ -46,7 +46,7 @@ export const getArtistSongsAction = (artistId) => {
   return async (dispatch) => {
     try {
       let resp = await fetch(
-        `${process.env.REACT_APP_LOCAL}/artist/${artistId}`
+        `${process.env.REACT_APP_LOCAL}/artist/${artistId}/top?limit=5`
       );
       if (resp.ok) {
         let result = await resp.json();
@@ -54,6 +54,28 @@ export const getArtistSongsAction = (artistId) => {
         dispatch({
           type: "GET_ARTIST_SONGS",
           payload: result.data,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getArtistInfoAction = (artistId) => {
+  return async (dispatch) => {
+    try {
+      let resp = await fetch(
+        `${process.env.REACT_APP_LOCAL}/artist/${artistId}`
+      );
+      if (resp.ok) {
+        let result = await resp.json();
+
+        dispatch({
+          type: "GET_ARTIST_INFO",
+          payload: result,
         });
       } else {
         console.log("error");

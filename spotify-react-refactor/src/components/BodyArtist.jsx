@@ -2,14 +2,39 @@ import { Container, Row, Col } from "react-bootstrap";
 import OneSongCard from "./OneSongCard";
 import { useState, useEffect } from "react";
 import PlaylistItem from "./PlaylistItem";
-const BodyArtist = () => {
+import { connect } from "react-redux";
+import { getArtistSongsAction, getArtistInfoAction } from "../redux/actions";
+import { useParams } from "react-router-dom";
+
+const mapStateToProps = (state) => ({
+  artistInfo: state.search.artistInfo,
+  artistSongs: state.search.artistSongs,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadArtistInfo: (artistId) => {
+    dispatch(getArtistInfoAction(artistId));
+  },
+  loadArtistSongs: (artistId) => {
+    dispatch(getArtistSongsAction(artistId));
+  },
+});
+
+const BodyArtist = (props) => {
+  const params = useParams();
+
+  useEffect(() => {
+    props.loadArtistInfo(params.artistId);
+    props.loadArtistSongs(params.artistId);
+  }, []);
+
   return (
     <>
       <div
         className="artist-main-container"
         style={{
-          backgroundImage:
-            "url(" + require("../Assests/foo-fighters-1.jpg") + ")",
+          backgroundImage: `url(${props.artistInfo.picture_xl})`,
+          //"url(" + require("../Assests/foo-fighters-1.jpg") + ")",
         }}
       >
         <Row className="artist-main-row-wrapper mb-4">
@@ -23,8 +48,8 @@ const BodyArtist = () => {
                 Verified artist{" "}
               </span>
             </div>
-            <h1>Foo Fighters</h1>
-            <div className="">37,123,321 monthly listeners</div>
+            <h1>{props.artistInfo.name}</h1>
+            <div className="">{props.artistInfo.nb_fan} monthly listeners</div>
           </Col>
         </Row>
       </div>
@@ -51,7 +76,9 @@ const BodyArtist = () => {
         </div>
       </div>
       <div className="artist-songs-table-wrapper px-3" id="play-list-container">
-        {<PlaylistItem />}
+        {props.artistSongs.map((song, i) => (
+          <PlaylistItem song={song} i={i} />
+        ))}
       </div>
       <div className="row">
         <div className="col-12">
@@ -63,7 +90,7 @@ const BodyArtist = () => {
   );
 };
 
-export default BodyArtist;
+export default connect(mapStateToProps, mapDispatchToProps)(BodyArtist);
 
 //OLD CODE FOR GETTING STATIC DATA
 
