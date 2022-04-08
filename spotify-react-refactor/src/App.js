@@ -49,9 +49,11 @@ function App() {
                   />
                 }
               />
-              <Route path="/artist" element={<BodyArtist />} />
-              <Route path="/album" element={<BodyAlbum />} />
+
+              <Route path="/artist/:artistId" element={<BodyArtist />} />
+              <Route path="/album/:albumId" element={<BodyAlbum />} />
               <Route path="/liked" element={<LikedSongs />} />
+
             </Routes>
           </Col>
         </Row>

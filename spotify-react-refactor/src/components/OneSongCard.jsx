@@ -1,5 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Comments from "./Comments";
+
+import { Link } from "react-router-dom";
+
 import { connect } from 'react-redux'
 import { addToLikedAction, removeFromLikedAction } from '../redux/actions'
 
@@ -16,6 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(removeFromLikedAction(songL))
     }
   })
+
 
 
 
@@ -50,15 +54,25 @@ const OneSongCard = (props) => (
             </div>
           </div>
         </div>
-        <h6 className="px-2 my-1 card-title">{props.title}</h6>
+
+       
+        
+       
+
+        <Link to={`/album/${props.albumId}`}>
+          <h6 className="px-2 my-1 card-title">{props.title}</h6>
+        </Link>
         <div className="d-flex justify-content-between" >
-        <p className="card-description-main my-2 px-2 ">{props.artist}</p>
+        <Link to={`/artist/${props.artistId}`}>
+          <p className="card-description-main my-2 px-2 ">{props.artist}</p>
+        </Link>
         {props.liked.indexOf(props.song) === -1 ?
         <i className="bi bi-heart mr-2 like-heart-button" onClick={()=> {props.addToLiked(props.song)}}></i>:
         <i className="bi bi-heart-fill mr-2 like-heart-button" onClick={()=>{props.removeFromLiked(props.liked.indexOf(props.song))}}></i>
         }
         </div>
-        {/* <p className="card-description-main my-2 px-2 "> */}
+        
+
           <Comments albumId={props.albumId} songId={props.songId} />
         {/* </p> */}
       </div>
