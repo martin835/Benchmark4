@@ -53,7 +53,7 @@ function App() {
               <Route path="/artist" element={<BodyArtist />} />
               <Route path="/album" element={<BodyAlbum />} />
               <Route path="/liked" element={<LikedSongs />} />
-              <Route path="/playlist" element={<Playlist />} />
+              <Route path="/playlist/:playlistName" element={<Playlist />} />
             </Routes>
           </Col>
         </Row>

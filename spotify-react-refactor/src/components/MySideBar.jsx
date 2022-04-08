@@ -100,7 +100,7 @@ const MySideBar = (props) => {
       </div>
       <div className="sidebar-bottom mt-2">
         <div className="sidebar-bottom-content">
-          {props.all.map((playlist) => {return <div>{playlist.name}</div>})
+          {props.all.map((playlist) => {return<Link to={`/playlist/${playlist.name}`}> <div>{playlist.name}</div> </Link>})
 }
         </div>
 

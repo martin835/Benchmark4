@@ -64,8 +64,8 @@ return(
         <h6 className="px-2 my-1 card-title">{props.title}</h6>
         <div className="d-flex justify-content-between" >
         <p className="card-description-main my-2 px-2 ">{props.artist}</p>
-        <div>
-        <i className="bi bi-plus-square-fill mr-2 like-heart-button" onClick={()=> setShow(true)}></i>
+        <div>{
+        <i className="bi bi-plus-square-fill mr-2 like-heart-button" onClick={()=> setShow(true)}></i>}
         {props.liked.indexOf(props.song) === -1 ?
         <i className="bi bi-heart mr-2 like-heart-button" onClick={()=> {props.addToLiked(props.song)}}></i>:
         <i className="bi bi-heart-fill mr-2 like-heart-button" onClick={()=>{props.removeFromLiked(props.liked.indexOf(props.song))}}></i>
